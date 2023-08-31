@@ -7,8 +7,8 @@ const notesRouter = require('./notes');
 
 const app = express();
 
-app.use('/tips', tipsRouter);
-app.use('/feedback', feedbackRouter);
-app.use('/diagnostics', diagnosticsRouter);
+app.use('/notes', notesRouter);
+// app.use('/feedback', feedbackRouter);
+// app.use('/diagnostics', diagnosticsRouter);
 
 module.exports = app;
