@@ -6,7 +6,7 @@ const notesRouter = require('./notes');
 // const diagnosticsRouter = require('./diagnostics');
 
 const app = express();
-
+// http://localhost:3001/api/notes
 app.use('/notes', notesRouter);
 // app.use('/feedback', feedbackRouter);
 // app.use('/diagnostics', diagnosticsRouter);
