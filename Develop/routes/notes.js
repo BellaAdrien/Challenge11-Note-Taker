@@ -27,7 +27,7 @@ notes.get('/:tip_id', (req, res) => {
 // DELETE Route for a specific tip
 notes.delete('/:tip_id', (req, res) => {
   const tipId = req.params.tip_id;
-  readFromFile('./db/db.json')
+  readFromFile('./db/notes.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all notes except the one with the ID provided in the URL
@@ -56,9 +56,9 @@ notes.post('/', (req, res) => {
     };
 
     readAndAppend(newTip, './db/notes.json');
-    res.json(`notes added successfully`);
+    res.json(`Tip added successfully`);
   } else {
-    res.error('Error in adding notes');
+    res.error('Error in adding tip');
   }
 });
 
