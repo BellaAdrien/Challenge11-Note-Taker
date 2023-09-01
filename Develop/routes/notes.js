@@ -8,7 +8,7 @@ const {
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
-  readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // GET Route for a specific tip
@@ -20,7 +20,7 @@ notes.get('/:tip_id', (req, res) => {
       const result = json.filter((tip) => tip.tip_id === tipId);
       return result.length > 0
         ? res.json(result)
-        : res.json('No tip with that ID');
+        : res.json('No notes with that ID');
     });
 });
 
@@ -45,20 +45,19 @@ notes.delete('/:tip_id', (req, res) => {
 notes.post('/', (req, res) => {
   console.log(req.body);
 
-  const { username, topic, tip } = req.body;
+  const { title, text } = req.body;
 
   if (req.body) {
-    const newTip = {
-      username,
-      tip,
-      topic,
-      tip_id: uuidv4(),
+    const newNote = {
+      title,
+      text,
+      id: uuidv4(),
     };
 
-    readAndAppend(newTip, './db/notes.json');
-    res.json(`Tip added successfully`);
+    readAndAppend(newNote, './db/db.json');
+    res.json(`Note added successfully`);
   } else {
-    res.error('Error in adding tip');
+    res.error('Error in adding Note');
   }
 });
 
